@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 * * * *'  # هر 1 ساعت اجرا شود.
+    - cron: '0 * * * *'  # اجرای هر 1 ساعت
 
 jobs:
   run-script:
@@ -26,7 +26,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install ccxt pandas numpy mplfinance zigzag
+        pip install Cython  # ابتدا Cython نصب شود
+        pip install ccxt pandas numpy mplfinance "zigzag==0.2.2"  # نصب نسخه پایدار zigzag
 
     - name: Run trading script
       run: |
