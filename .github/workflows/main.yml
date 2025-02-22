@@ -1,31 +1,31 @@
-name: Run Trading Script
+name: Run Trading Bot
 
 on:
   push:
     branches:
       - main
   schedule:
-    - cron: "0 * * * *"  # اجرا در ابتدای هر ساعت
+    - cron: '0 * * * *'  # اجرای هر ساعت
 
 jobs:
-  run_script:
+  run_bot:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.9"
+          python-version: '3.9'
 
-      - name: Install dependencies
+      - name: Upgrade pip and install dependencies
         run: |
           pip install --upgrade pip setuptools wheel
-          pip install --no-cache-dir numpy cython
-          pip install --no-build-isolation zigzag==0.2.2 || pip install git+https://github.com/TradingStrategyAI/zigzag
-          pip install ccxt pandas mplfinance
+          pip install numpy==1.26.4 cython
+          pip install pandas ccxt mplfinance
+          pip install git+https://github.com/TradingStrategyAI/zigzag
 
-      - name: Run script
-        run: main.py
+      - name: Run Script
+        run: python main.py  # اجرای اسکریپت اصلی
