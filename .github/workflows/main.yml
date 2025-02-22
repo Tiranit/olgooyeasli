@@ -23,9 +23,9 @@ jobs:
       - name: Upgrade pip and install dependencies
         run: |
           pip install --upgrade pip setuptools wheel
-          pip install numpy==1.26.4 cython
-          pip install pandas ccxt mplfinance
-          pip install git+https://github.com/TradingStrategyAI/zigzag
+          pip install numpy==1.26.1 cython
+          pip install pandas ccxt requests websockets mplfinance matplotlib
+          pip install git+https://github.com/TradingStrategyAI/zigzag@v0.3.2
 
       - name: Run Script
         run: python main.py  # اجرای اسکریپت اصلی
